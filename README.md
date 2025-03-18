@@ -20,8 +20,8 @@ Constantes criadas para armazenar as credenciais do banco de dados.
 PDO foi usado para gerar conexao segura.
 
 Try/Catch para capturar errros na conexao.
--------------------------------------------------------------------------------
 
+--
 Area de Login (login.php);
 
 Usei o session para armazenar os dados do usuario.
@@ -36,8 +36,8 @@ Valida o usuario no banco de dados
 Usa o session para salvar os dados
 
 Redireciona para o painel.php apos o login.
-----------------------------------------------------------------------------------
 
+--
 Area Painel (painel.php);
 
 Verificacao de login para acesso seguro.
@@ -45,11 +45,21 @@ Verificacao de login para acesso seguro.
 Menu com opcoes: Clientes, Servicos, Agendamentos, Logout.
 
 Exibicao de dados basicos como total de cliente, servicos e agendamentos.
-----------------------------------------------------------------------------------
 
+--
 Gerencimento de cliente (cliente.php);
 
 Listagem de clientes cadastrados
 Formulario para adicionar novos clientes.
 Opcao para excluir clientes.
-----------------------------------------------------------------------------------
+
+--
+Gerenciamento de servico (servicos.php);
+
+Listagem de servicos cadastrados.
+
+Formulario para adicionar novos servicos.
+
+Opcao para excluir servicos.
+
+--
