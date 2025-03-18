@@ -63,3 +63,12 @@ Formulario para adicionar novos servicos.
 Opcao para excluir servicos.
 
 --
+Gerenciamento de Agendamentos (agendamentos.php);
+
+Listagem de agendamentos cadastrados.
+
+Formulario para adicionar novos agendamentos.
+
+Opcao para exlcuir agendamentos.
+
+--
