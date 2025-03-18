@@ -4,7 +4,7 @@ USE barbearia;
 
 -- Tabela de usuarios (barbeiros e admins)
 CREATE TABLE usuarios (
-  ind INT AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
   senha VARCHAR(100) NOT NULL, -- Senha sera armazenada criptografada
@@ -27,7 +27,7 @@ CREATE TABLE servicos (
   nome VARCHAR(100) NOT NULL,
   descricao TEXT,
   preco DECIMAL(10,2) NOT NULL,
-  duracao INT NOT NULL, --Duracao do servico em minutos
+  duracao INT NOT NULL, -- Duracao do servico em minutos
   criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

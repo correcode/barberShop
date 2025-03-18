@@ -3,31 +3,41 @@ session_start();
 require_once 'database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $email = $_POST['email'];
-  $senha = md5($_POST['senha']); // Senha criptografada com MD5
+    $email = $_POST['email'];
+    $senha = $_POST['senha']; 
 
-  try {
-    $pdo = conectarBanco();
-    $stmt = $pdo->prepare('SELECT id, nome, tipo FROM usuarios WHERE email = ? AND senha = ?');
-    $stmt->execute([$email, $senha]);
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        $pdo = conectarBanco();
+        $stmt = $pdo->prepare('SELECT id, nome, tipo, senha FROM usuarios WHERE email = ?');
+        $stmt->execute([$email]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($usuario) {
-      $_SESSION['usuario_id'] = $usuario['id'];
-      $_SESSION['usuario_nome'] = $usuario['nome'];
-      $_SESSION['usuario_tipo'] = $usuario['tipo'];
+        var_dump($usuario); // Debug para ver se encontrou o usuário
 
-      // Redirecionar para o painel
-      header('Location: painel.php');
-      exit();
-    } else {
-      echo "<p style='color: red;'>Email ou senha invalidos!</p>";
+        if ($usuario) {
+            var_dump($senha); // Senha digitada
+            var_dump($usuario['senha']); // Senha no banco
+
+            if (password_verify($senha, $usuario['senha'])) {
+                $_SESSION['usuario_id'] = $usuario['id'];
+                $_SESSION['usuario_nome'] = $usuario['nome'];
+                $_SESSION['usuario_tipo'] = $usuario['tipo'];
+
+                header('Location: painel.php');
+                exit();
+            } else {
+                echo "<p style='color: red;'>Senha incorreta!</p>";
+            }
+        } else {
+            echo "<p style='color: red;'>Usuário não encontrado!</p>";
+        }
+    } catch (PDOException $e) {
+        die("Erro no login: " . $e->getMessage());
     }
-  } catch (PDOException $e) {
-    die("Erro no login: " . $e->getMessage());
-}
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>

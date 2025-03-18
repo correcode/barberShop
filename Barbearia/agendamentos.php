@@ -32,7 +32,13 @@ if (isset($_GET['excluir'])) {
 }
 
 //Buscar todos os agendamentos
-$stmt = $pdo->query('SELECT a.id, c.nome AS cliente, s.nome AS servico, a.data_hora FROM agendamentos a JOIN clientes c ON a.cliente_id = c.id JOIN servico_id = s.id ORDER BY a.data_hora DESC');
+$stmt = $pdo->query('
+    SELECT a.id, c.nome AS cliente, s.nome AS servico, a.data_hora 
+    FROM agendamentos a 
+    JOIN clientes c ON a.cliente_id = c.id 
+    JOIN servicos s ON a.servico_id = s.id 
+    ORDER BY a.data_hora DESC
+');
 $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //Busca clientes e servicos para o formulario

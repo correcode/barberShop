@@ -1,0 +1,20 @@
+# .htaccess - Configurações de segurança e redirecionamento
+
+# Impede a exibição de arquivos sensíveis
+<FilesMatch "(config\.php|database\.php)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Redireciona todas as requisições para index.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Protege o diretório de uploads (se houver)
+<Directory "/uploads">
+    Options -Indexes
+    Order Deny,Allow
+    Deny from all
+</Directory>
