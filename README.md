@@ -47,3 +47,9 @@ Menu com opcoes: Clientes, Servicos, Agendamentos, Logout.
 Exibicao de dados basicos como total de cliente, servicos e agendamentos.
 ----------------------------------------------------------------------------------
 
+Gerencimento de cliente (cliente.php);
+
+Listagem de clientes cadastrados
+Formulario para adicionar novos clientes.
+Opcao para excluir clientes.
+----------------------------------------------------------------------------------
