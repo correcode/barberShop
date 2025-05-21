@@ -1,74 +1,75 @@
-Descricao de desenvolvimento APP BARBERSHOP
 
-Banco de dados (database_barber.sql);
+# BarberShop
 
-Usuarios: Armazenar Funcionarios (Barbeiros e Administradores)
+Sistema de gerenciamento para barbearias, desenvolvido em PHP com conexão a um banco de dados MySQL.
 
-Clientes: Cadastro de clientes.
+## 📋 Descrição
 
-Servicos: Tipos de servicos oferecidos.
+Este projeto visa facilitar o gerenciamento de clientes, serviços e agendamentos em uma barbearia.
+Possui funcionalidades como cadastro de usuários (administradores e barbeiros), clientes, serviços oferecidos e agendamentos com diferentes status (pendente, confirmado, cancelado).
 
-Agendamentos: Marcacoes de horario com status (pendente, confirmado, cancelado).
+## 🛠️ Tecnologias Utilizadas
 
-Foi desenvolvido um usuarios admin padrao.
+- **PHP**: Linguagem principal para o desenvolvimento do backend.
+- **MySQL**: Banco de dados relacional para armazenamento das informações.
+- **PDO (PHP Data Objects)**: Utilizado para a conexão segura com o banco de dados.
+- **HTML/CSS**: Para a estrutura e estilização das páginas.
+- **MD5**: Para criptografar as senhas dos usuários (recomenda-se substituir por `password_hash` para maior segurança).
 
+## 📁 Estrutura do Projeto
 
-Conexao do banco de dados com Beckend (config.php)
+```
+barberShop/
+├── Barbearia/
+│   ├── config.php
+│   ├── login.php
+│   ├── painel.php
+│   ├── clientes.php
+│   ├── servicos.php
+│   ├── agendamentos.php
+│   └── ...
+├── database_barber.sql
+├── README.md
+```
 
-Constantes criadas para armazenar as credenciais do banco de dados.
+- `config.php`: Arquivo de configuração para conexão com o banco de dados.
+- `login.php`: Página de login que valida o usuário e inicia a sessão.
+- `painel.php`: Painel principal após o login, com acesso às funcionalidades do sistema.
+- `clientes.php`: Gerenciamento de clientes.
+- `servicos.php`: Gerenciamento de serviços oferecidos.
+- `agendamentos.php`: Gerenciamento de agendamentos.
+- `database_barber.sql`: Script SQL para criação do banco de dados.
 
-PDO foi usado para gerar conexao segura.
+## 🚀 Como Executar
 
-Try/Catch para capturar errros na conexao.
+1. Clone o repositório:
 
---
-Area de Login (login.php);
+```bash
+git clone https://github.com/correcode/barberShop.git
+```
 
-Usei o session para armazenar os dados do usuario.
+2. Importe o arquivo `database_barber.sql` em seu servidor MySQL para criar o banco de dados necessário.
 
-Usei o MD5 para criptografar as senhas dos usuarios podendo melhorar depois
-com o password_hash.
+3. Configure o arquivo `config.php` com as credenciais do seu banco de dados:
 
-Login faz:
+```php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'nome_do_banco');
+define('DB_USER', 'usuario');
+define('DB_PASS', 'senha');
+```
 
-Valida o usuario no banco de dados
+4. Coloque os arquivos do projeto em seu servidor web (por exemplo, Apache) e acesse `login.php` para iniciar o sistema.
 
-Usa o session para salvar os dados
+## 🔐 Segurança
 
-Redireciona para o painel.php apos o login.
+- As senhas dos usuários são criptografadas utilizando MD5. Para maior segurança, é recomendável utilizar `password_hash` e `password_verify` do PHP.
+- As sessões são utilizadas para manter o estado de autenticação do usuário.
 
---
-Area Painel (painel.php);
+## 👨‍💻 Autor
 
-Verificacao de login para acesso seguro.
+- GitHub: [correcode](https://github.com/correcode)
 
-Menu com opcoes: Clientes, Servicos, Agendamentos, Logout.
+---
 
-Exibicao de dados basicos como total de cliente, servicos e agendamentos.
-
---
-Gerencimento de cliente (cliente.php);
-
-Listagem de clientes cadastrados
-Formulario para adicionar novos clientes.
-Opcao para excluir clientes.
-
---
-Gerenciamento de servico (servicos.php);
-
-Listagem de servicos cadastrados.
-
-Formulario para adicionar novos servicos.
-
-Opcao para excluir servicos.
-
---
-Gerenciamento de Agendamentos (agendamentos.php);
-
-Listagem de agendamentos cadastrados.
-
-Formulario para adicionar novos agendamentos.
-
-Opcao para exlcuir agendamentos.
-
---
+Este sistema é uma solução prática para o gerenciamento de barbearias, facilitando o controle de clientes, serviços e agendamentos.
